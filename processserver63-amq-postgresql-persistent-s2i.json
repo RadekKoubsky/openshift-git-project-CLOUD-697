@@ -220,15 +220,13 @@
         {
             "description": "User name for standard broker user. It is required for connecting to the broker. If left empty, it will be generated.",
             "name": "MQ_USERNAME",
-            "from": "user[a-zA-Z0-9]{3}",
-            "generate": "expression",
+            "value": "mqUser",
             "required": false
         },
         {
             "description": "Password for standard broker user. It is required for connecting to the broker. If left empty, it will be generated.",
             "name": "MQ_PASSWORD",
-            "from": "[a-zA-Z0-9]{8}",
-            "generate": "expression",
+            "value": "mqPassword",
             "required": false
         },
         {
@@ -361,6 +359,45 @@
                 }
             }
         },
+	{
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "amq-sec-service"
+    },
+    "spec": {
+        "ports": [
+            {
+                "name": "openwire-ssl",
+                "protocol": "TCP",
+                "port": 61617,
+                "targetPort": 61617
+            }
+        ],
+        "selector": {
+            "deploymentConfig": "kie-app-amq"
+        }
+    }
+},
+{
+    "kind": "Route",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "openwire-sec-route"
+    },
+    "spec": {
+        "to": {
+            "kind": "Service",
+            "name": "amq-sec-service"
+        },
+        "port": {
+            "targetPort": 61617
+        },
+        "tls": {
+            "termination": "passthrough"
+        }
+    }
+},
         {
             "kind": "Route",
             "apiVersion": "v1",
@@ -1014,6 +1051,22 @@
                                     {
                                         "name": "AMQ_STORAGE_USAGE_LIMIT",
                                         "value": "${AMQ_STORAGE_USAGE_LIMIT}"
+                                    },
+				    {
+                                        "name": "AMQ_KEYSTORE",
+                                        "value": "broker.ks"
+                                    },
+				    {
+                                        "name": "AMQ_TRUSTSTORE",
+                                        "value": "broker.ts"
+                                    },
+				    {
+                                        "name": "AMQ_KEYSTORE_PASSWORD",
+                                        "value": "password"
+                                    },
+				    {
+                                        "name": "AMQ_TRUSTSTORE_PASSWORD",
+                                        "value": "password"
                                     }
                                 ]
                             }

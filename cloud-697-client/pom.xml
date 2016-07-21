@@ -11,7 +11,7 @@
 		<dependency>
 			<groupId>org.kie.server</groupId>
 			<artifactId>kie-server-client</artifactId>
-			<version>6.4.0.Final</version>
+			<version>6.4.0.Final-redhat-3-RHBRMS2475</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -27,16 +27,29 @@
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-client</artifactId>
 			<version>5.11.0</version>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>xpaas-archiva-repo</id>
+			<name>xPaaS Archiva</name>
+			<url>http://maven.xpaas:9091/repository/xpaas/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+	</repositories>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
+				<version>3.5.1</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>

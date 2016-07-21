@@ -19,16 +19,16 @@ import java.nio.file.Paths;
  * @author Radek Koubsky (rkoubsky@redhat.com)
  */
 public class Client {
-	static final String CONTAINER_ID = "RollingUpdates";
-	static final String CONTAINER_V1 = "RollingUpdates=com.redhat.xpaas.bpms:migration-process:1.0.0";
-	static final String CONTAINER_V2 = "RollingUpdates=com.redhat.xpaas.bpms:migration-process:1.0.1";
+	private static final String CONTAINER_ID = "RollingUpdates";
+	private static final String CONTAINER_V1 = "RollingUpdates=com.redhat.xpaas.bpms:migration-process:1.0.0";
+	private static final String CONTAINER_V2 = "RollingUpdates=com.redhat.xpaas.bpms:migration-process:1.0.1";
 	private static final Logger LOGGER = LoggerFactory.getLogger(Client.class);
 
 	public static void main(final String[] args) throws Exception {
 		final String hostName = args[0];
 
 		final ActiveMQSslConnectionFactory openwireFactory = new ActiveMQSslConnectionFactory(
-				"failover:ssl://" + hostName + ":443?soTimeout=30000");
+				"ssl://" + hostName + ":443?soTimeout=30000");
 		openwireFactory.setUserName("mqUser");
 		openwireFactory.setPassword("mqPassword");
 
@@ -53,8 +53,8 @@ public class Client {
 				.filter(def -> "1.0".equals(def.getVersion())).iterator().next();
 
 		LOGGER.info("Process definition V1: {}", procDefV1);
-		final ProcessInstance processInstV1 = processServicesClientV1.getProcessInstance("RollingUpdates=com.redhat.xpaas.bpms:migration-process:1.0.0",
-				processServicesClientV1.startProcess("RollingUpdates=com.redhat.xpaas.bpms:migration-process:1.0.0",
+		final ProcessInstance processInstV1 = processServicesClientV1.getProcessInstance(CONTAINER_V1,
+				processServicesClientV1.startProcess(CONTAINER_V1,
 						procDefV1.getId()));
 		LOGGER.info("Process instance V1: {}", processInstV1);
 
@@ -65,8 +65,8 @@ public class Client {
 				.stream()
 				.filter(def -> "2.0".equals(def.getVersion())).iterator().next();
 		LOGGER.info("Process definition V2: {}", procDefV2);
-		final ProcessInstance processInstV2 = processServicesClientV2.getProcessInstance("RollingUpdates=com.redhat.xpaas.bpms:migration-process:1.0.1",
-				processServicesClientV2.startProcess("RollingUpdates=com.redhat.xpaas.bpms:migration-process:1.0.1",
+		final ProcessInstance processInstV2 = processServicesClientV2.getProcessInstance(CONTAINER_V2,
+				processServicesClientV2.startProcess(CONTAINER_V2,
 						procDefV2.getId()));
 		LOGGER.info("Process instance V2: {}", processInstV2);
 
