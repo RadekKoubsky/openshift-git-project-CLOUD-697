@@ -1,0 +1,39 @@
+[INFO] Error stacktraces are turned on.
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building MigrationProcess 1.0.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-cli) @ migration-process ---
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ migration-process ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ migration-process ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 8 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ migration-process ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/rkoubsky/xpaas-qe/test-bpms/src/test/resources/apps/migration-process/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ migration-process ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/rkoubsky/xpaas-qe/test-bpms/src/test/resources/apps/migration-process/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ migration-process ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ migration-process ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ migration-process ---
+[INFO] Building jar: /home/rkoubsky/xpaas-qe/test-bpms/src/test/resources/apps/migration-process/target/migration-process-1.0.0.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 3.570 s
+[INFO] Finished at: 2016-07-21T10:02:05+02:00
+[INFO] Final Memory: 26M/285M
+[INFO] ------------------------------------------------------------------------

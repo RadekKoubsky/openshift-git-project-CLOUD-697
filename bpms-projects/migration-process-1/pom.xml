@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.redhat.xpaas.bpms</groupId>
+  <artifactId>migration-process</artifactId>
+  <version>1.0.1</version>
+  <name>MigrationProcess</name>
+  <description>Version 1 -
+        start -> set ObjectV1 to variable -> parallel(user task 1, user task 2) -> Read Objectv1 from variable -> end
+Version 2
+        start -> set ObjectV2 to variable  ->  parallel(user task 1, user task 2, user task 3) -> Read Objectv2 from variable -> end</description>
+  <properties>
+    <drools.version>6.4.0.Final</drools.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.kie</groupId>
+      <artifactId>kie-api</artifactId>
+      <version>${drools.version}</version>
+    </dependency>
+  </dependencies>
+  <pluginRepositories>
+    <pluginRepository>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>redhat.ga</id>
+      <name>Red Hat General Availability Repository</name>
+      <url>https://maven.repository.redhat.com/ga</url>
+    </pluginRepository>
+  </pluginRepositories>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.kie</groupId>
+        <artifactId>kie-maven-plugin</artifactId>
+        <version>${drools.version}</version>
+        <extensions>true</extensions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
