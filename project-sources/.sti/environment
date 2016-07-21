@@ -1,1 +1,2 @@
-KIE_CONTAINER_DEPLOYMENT=RollingUpdates=com.redhat.xpaas.bpms:migration-process:1.0.0|RollingUpdates=com.redhat.xpaas.bpms:migration-process:1.0.1
+KIE_CONTAINER_DEPLOYMENT_OVERRIDE=RollingUpdates=com.redhat.xpaas.bpms:migration-process:1.0.0|RollingUpdates=com.redhat.xpaas.bpms:migration-process:1.0.1
+KIE_CONTAINER_REDIRECT_ENABLED=true
